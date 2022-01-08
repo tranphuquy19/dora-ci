@@ -1,7 +1,12 @@
 <template>
   <v-app-bar dense app color="primary" dark>
     <v-app-bar-nav-icon @click="onToggleDrawer()"></v-app-bar-nav-icon>
-    <router-link to="/" tag="div" class="d-flex align-center" id="home-icon">
+    <router-link
+      :to="{ name: 'Home' }"
+      tag="div"
+      class="d-flex align-center"
+      id="home-icon"
+    >
       <v-img
         alt="Vuetify Logo"
         class="shrink mr-2"

@@ -2,13 +2,13 @@
   <v-app>
     <NavBar />
 
-    <v-content class="pt-10">
+    <v-main class="pt-10">
       <v-container fluid>
         <SideBar />
         <router-view />
         <Footer />
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
