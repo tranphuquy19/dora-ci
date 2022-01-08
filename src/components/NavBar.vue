@@ -1,7 +1,7 @@
 <template>
   <v-app-bar dense app color="primary" dark>
     <v-app-bar-nav-icon @click="onToggleDrawer()"></v-app-bar-nav-icon>
-    <div class="d-flex align-center">
+    <router-link to="/" tag="div" class="d-flex align-center" id="home-icon">
       <v-img
         alt="Vuetify Logo"
         class="shrink mr-2"
@@ -11,7 +11,7 @@
         width="40"
       />
       <v-toolbar-title>DoraCI</v-toolbar-title>
-    </div>
+    </router-link>
 
     <v-spacer></v-spacer>
 
@@ -50,4 +50,8 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+#home-icon {
+  cursor: pointer;
+}
+</style>
