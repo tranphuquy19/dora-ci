@@ -11,18 +11,21 @@ const ls = new SecureLS({ isCompression: false });
 
 Vue.use(Vuex);
 
-const debug = process.env.NODE_ENV !== "production";
-const plugins = debug
-  ? [createLogger()]
-  : [
-      createPersistedState({
-        storage: {
-          getItem: (key) => ls.get(key),
-          setItem: (key, value) => ls.set(key, value),
-          removeItem: (key) => ls.remove(key),
-        },
-      }),
-    ];
+const debug = process.env.VUE_APP_NODE_ENV !== "production";
+
+const plugins = [
+  createPersistedState({
+    storage: {
+      getItem: (key) => ls.get(key),
+      setItem: (key, value) => ls.set(key, value),
+      removeItem: (key) => ls.remove(key),
+    },
+  }),
+];
+
+if (debug) {
+  plugins.push(createLogger());
+}
 
 export default new Vuex.Store({
   state: {},
