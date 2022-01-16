@@ -4,7 +4,8 @@ import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import SecureLS from "secure-ls";
 
-import metaModule from "./meta/meta";
+import AuthModule from "./auth/state";
+import MetaModule from "./meta/meta";
 
 const ls = new SecureLS({ isCompression: false });
 
@@ -16,7 +17,8 @@ export default new Vuex.Store({
   actions: {},
   getters: {},
   modules: {
-    metaModule,
+    AuthModule,
+    MetaModule,
   },
   plugins: [
     createPersistedState({

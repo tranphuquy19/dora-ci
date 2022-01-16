@@ -1,20 +1,17 @@
-import { Module } from "vuex";
+import { Module, Mutation, VuexModule } from "vuex-module-decorators";
 
 import { ON_TOGGLE_DRAWER } from "./constants";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const metaModule: Module<any, any> = {
-  state: {
-    drawer: false,
-  },
-  getters: {
-    _drawer: (state) => state.drawer,
-  },
-  mutations: {
-    [ON_TOGGLE_DRAWER]: (state) => (state.drawer = !state.drawer),
-  },
-  actions: {},
-  modules: {},
-};
+@Module
+export default class MetaModule extends VuexModule {
+  drawer = false;
 
-export default metaModule;
+  get _drawer(): boolean {
+    return this.drawer;
+  }
+
+  @Mutation
+  [ON_TOGGLE_DRAWER](): void {
+    this.drawer = !this.drawer;
+  }
+}
