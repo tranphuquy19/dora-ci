@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-import Vuex from "vuex";
+import Vuex, { createLogger } from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import SecureLS from "secure-ls";
 
@@ -11,6 +11,19 @@ const ls = new SecureLS({ isCompression: false });
 
 Vue.use(Vuex);
 
+const debug = process.env.NODE_ENV !== "production";
+const plugins = debug
+  ? [createLogger()]
+  : [
+      createPersistedState({
+        storage: {
+          getItem: (key) => ls.get(key),
+          setItem: (key, value) => ls.set(key, value),
+          removeItem: (key) => ls.remove(key),
+        },
+      }),
+    ];
+
 export default new Vuex.Store({
   state: {},
   mutations: {},
@@ -20,13 +33,5 @@ export default new Vuex.Store({
     AuthModule,
     MetaModule,
   },
-  plugins: [
-    createPersistedState({
-      storage: {
-        getItem: (key) => ls.get(key),
-        setItem: (key, value) => ls.set(key, value),
-        removeItem: (key) => ls.remove(key),
-      },
-    }),
-  ],
+  plugins: plugins,
 });
