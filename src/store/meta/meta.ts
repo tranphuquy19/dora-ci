@@ -1,9 +1,10 @@
 import { Module, Mutation, VuexModule } from "vuex-module-decorators";
 
 import { ON_TOGGLE_DRAWER } from "./constants";
+import { IMetaModule } from "./interfaces";
 
 @Module
-export default class MetaModule extends VuexModule {
+export default class MetaModule extends VuexModule implements IMetaModule {
   drawer = false;
 
   get _drawer(): boolean {
