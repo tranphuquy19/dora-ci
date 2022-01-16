@@ -1,8 +1,8 @@
-export interface IAuthState {
+export interface IAccount {
   token: string;
 }
 
 export interface IAuthModule {
-  accounts: IAuthState[];
+  accounts: IAccount[];
   accountIndex: number;
 }

@@ -6,11 +6,11 @@ import {
   REMOVE_TOKEN,
   SET_TOKEN_INDEX,
 } from "./constants";
-import { IAuthModule, IAuthState } from "./interfaces";
+import { IAuthModule, IAccount } from "./interfaces";
 
 @Module
 export default class AuthModule extends VuexModule implements IAuthModule {
-  accounts: IAuthState[] = [];
+  accounts: IAccount[] = [];
   accountIndex = -1;
 
   get _token(): string {
