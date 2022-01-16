@@ -4,7 +4,7 @@ import Vuex, { createLogger } from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import SecureLS from "secure-ls";
 
-import AuthModule from "./auth/state";
+import AuthModule from "./auth/auth";
 import MetaModule from "./meta/meta";
 
 const ls = new SecureLS({ isCompression: false });
