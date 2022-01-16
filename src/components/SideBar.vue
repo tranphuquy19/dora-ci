@@ -56,7 +56,10 @@
 
 <script lang="ts">
 import Vue from "vue";
+
 import { mapGetters, mapMutations } from "vuex";
+
+import { ON_TOGGLE_DRAWER } from "@/store/meta/constants";
 
 export default Vue.extend({
   name: "SideBar",
@@ -73,7 +76,7 @@ export default Vue.extend({
     ...mapGetters(["_drawer"]),
   },
   methods: {
-    ...mapMutations(["onToggleDrawer"]),
+    ...mapMutations([ON_TOGGLE_DRAWER]),
   },
 });
 </script>

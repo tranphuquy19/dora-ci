@@ -1,24 +1,23 @@
 import Vue from "vue";
+
 import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import SecureLS from "secure-ls";
+
+import metaModule from "./meta/meta";
 
 const ls = new SecureLS({ isCompression: false });
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    drawer: false,
-  },
-  mutations: {
-    onToggleDrawer: (state) => (state.drawer = !state.drawer),
-  },
+  state: {},
+  mutations: {},
   actions: {},
-  getters: {
-    _drawer: (state) => state.drawer,
+  getters: {},
+  modules: {
+    metaModule,
   },
-  modules: {},
   plugins: [
     createPersistedState({
       storage: {

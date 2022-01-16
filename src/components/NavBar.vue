@@ -34,8 +34,8 @@
       </template>
 
       <v-list>
-        <v-list-item v-for="n in 5" :key="n" @click="() => {}">
-          <v-list-item-title>Option {{ n }}</v-list-item-title>
+        <v-list-item @click="() => {}">
+          <v-list-item-title>Add Key</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -44,7 +44,10 @@
 
 <script lang="ts">
 import Vue from "vue";
+
 import { mapMutations } from "vuex";
+
+import { ON_TOGGLE_DRAWER } from "@/store/meta/constants";
 
 export default Vue.extend({
   name: "NavBar",
@@ -52,7 +55,7 @@ export default Vue.extend({
     drawer: false,
   }),
   methods: {
-    ...mapMutations(["onToggleDrawer"]),
+    ...mapMutations([ON_TOGGLE_DRAWER]),
   },
 });
 </script>
